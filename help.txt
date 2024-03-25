@@ -1,0 +1,7 @@
+To begin, tap the upload button located at the bottom right corner of the Home page. Select the file you wish to evaluate. Our trained model will analyze the file and provide results indicating whether the individual is Autistic or Non-Autistic.
+
+For further information on Autism Spectrum Disorder, diagnosis methods, treatment, and detection techniques, please refer to the 'About' section.
+
+Customize the appearance of the menu by adjusting the appearance mode option.
+
+You can also adjust the font size using the size menu for better readability."

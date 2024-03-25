@@ -27,11 +27,12 @@ class App(customtkinter.CTk):
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="Autism Detector", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, command=self.sidebar_button_event)
+        ###
+        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, )
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
-        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, command=self.sidebar_button_event)
+        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, )
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
-        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, command=self.sidebar_button_event)
+        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, )
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
@@ -129,8 +130,9 @@ class App(customtkinter.CTk):
         # self.checkbox_3.grid(row=3, column=0, pady=20, padx=20, sticky="n")
 
         # set default values
-        self.sidebar_button_3.configure(state="disabled", text="Help")
-        self.sidebar_button_2.configure(text="About")
+        self.sidebar_button_1.configure( command=self.switchToHome)
+        self.sidebar_button_2.configure(text="About",command=self.switchToAbout)
+        self.sidebar_button_3.configure(text="Help",command=self.switchToHelp)
 
         # self.checkbox_3.configure(state="disabled")
         # self.checkbox_1.select()
@@ -160,8 +162,16 @@ class App(customtkinter.CTk):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
-    def sidebar_button_event(self):
-       pass
+    def switchToHome(self):
+        self.textbox.delete(1.0, "end")
+        self.textbox.insert(0.0, text="CTkTextbox\n\n" +"Welcome To Autism Detector")
+    def switchToAbout(self):
+        self.textbox.delete(1.0,"end")
+        self.textbox.insert(0.0,text="CTkTextbox\n\n" +"ASDDS Version 1.0")
+    def switchToHelp(self):
+        helpText=open("help.txt","r")
+        self.textbox.delete(1.0,"end")
+        self.textbox.insert(0.0,text="CTkTextbox\n\n" +helpText.read())
     def uploadEvent(self):
         filename = filedialog.askopenfilename()
         print('Selected:', filename)
